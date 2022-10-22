@@ -1,0 +1,13 @@
+version: '3.6'
+services:             
+    oracle:
+      image: wnameless/oracle-xe-11g-r2
+      container_name: uprpod-oracle
+      environment:
+        - ORACLE_ALLOW_REMOTE=true
+      ports:
+        - "35:22"
+        - "1531:1521"
+      volumes:
+            - ./01_oracle_create_tables.sql:/docker-entrypoint-initdb.d/01_oracle_create_tables.sql
+
