@@ -12,6 +12,15 @@ završetka
 ŠRC Šalata, tenis, 7, 3. 11. 2022. u 11 sati, 3. 11. 2022. u 13 sati 
 ŠRC Trnje, nogomet, 3, 4. 11. 2022. u 21 sat, 4. 11. 2022. u 21.30 sati
 
+SELECT SPORTSKI_OBJEKT.IME SPORTSKI_OBJEKT_IME,  TEREN.VRSTA_TERENA, TEREN.TEREN_ID, REZERVACIJA.POCETAK,REZERVACIJA.KRAJ FROM REZERVACIJA
+JOIN KORISNIK ON REZERVACIJA.OIB = KORISNIK.OIB
+JOIN TEREN ON REZERVACIJA.TEREN_ID = TEREN.TEREN_ID
+JOIN SPORTSKI_OBJEKT ON teren.sportski_objekt_id = sportski_objekt.sportski_objekt_id
+WHERE REZERVACIJA.POCETAK BETWEEN 
+    TO_DATE('2021/01/10 11:00', 'yyyy/mm/dd hh24:mi') AND
+    TO_DATE('2021/05/26 16:00', 'yyyy/mm/dd hh24:mi')
+AND KORISNIK.OIB IN ('0515');
+
 3. 
 Želim dobiti popis svih rezervacija za određeni kvart.
 Primjer:

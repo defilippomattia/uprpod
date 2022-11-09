@@ -52,12 +52,33 @@ INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES 
     '5',
     '0515');
 
-
 INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '5',
-    TO_DATE('2022/01/11 11:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2022/01/11 12:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('2021/05/23 15:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('2021/05/23 16:00', 'yyyy/mm/dd hh24:mi'),
+    '5',
+    '0515');
+
+INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '6',
+    TO_DATE('2021/05/25 15:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('2021/05/25 16:00', 'yyyy/mm/dd hh24:mi'),
+    '5',
+    '0515');
+
+
+INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+    '7',
+    TO_DATE('2021/05/27 15:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('2021/05/27 16:00', 'yyyy/mm/dd hh24:mi'),
+    '4',
+    '0515');
+
+INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+    '8',
+    TO_DATE('2021/05/26 15:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('2021/05/26 16:00', 'yyyy/mm/dd hh24:mi'),
+    '1',
     '0515');
 
 
