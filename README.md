@@ -1,5 +1,6 @@
 git clone https://github.com/defilippomattia/uprpod
-cd uprpod docker-compose up -d --force-recreate
+cd uprpod 
+docker-compose up -d --force-recreate
 login to sqldeveloper
 execute: alter session set nls_date_format = 'dd/MON/yyyy hh24:mi'
 
@@ -54,3 +55,42 @@ SELECT TIP, SPORTSKI_OBJEKT.IME, COUNT(*) UKUPNO_REKVIZITA FROM REKVIZIT
 LEFT OUTER JOIN SPORTSKI_OBJEKT
 ON rekvizit.sportski_objekt_id = SPORTSKI_OBJEKT.SPORTSKI_OBJEKT_ID
 GROUP BY TIP, SPORTSKI_OBJEKT.IME
+
+# Constrainit...
+
+alter session set nls_date_format = 'dd/MON/yyyy hh24:mi'
+
+set serveroutput on;
+-- Trigger will not let an insert on the Match table with invalid countries for the competition
+CREATE OR REPLACE TRIGGER matchcountry_BIR
+BEFORE INSERT ON system.rezervacija
+FOR EACH ROW
+DECLARE
+  invalidEng EXCEPTION;
+  someNum INTEGER;
+  --team1 teams.Country%type;
+  --team2 teams.Country%type;
+  --comp matches.Competition%type;
+BEGIN
+  --SELECT Country INTO team1 FROM teams WHERE TeamID = :new.TeamID_A;
+  --SELECT Country INTO team2 FROM teams WHERE TeamID = :new.TeamID_B;
+  --SELECT Competition INTO comp FROM matches WHERE MatchID = :new.MatchID;
+  --comp := :new.competition;
+  --SELECT COUNT(*) INTO someNum 
+  --FROM system.rezervacija;
+  
+  SELECT COUNT(*) INTO someNum
+  FROM KORISNIK
+  JOIN REZERVACIJA ON KORISNIK.OIB = REZERVACIJA.OIB
+  WHERE SUBSTR(CURRENT_DATE,0,12) = SUBSTR(REZERVACIJA.pocetak,0,12)
+  AND :new.OIB = KORISNIK.OIB;
+  IF (someNum>2) THEN
+  --IF (comp='All England') AND (team1!='England' AND team2!='England') THEN
+    RAISE invalidEng;
+  END IF;
+  dbms_output.put_line(someNum);
+EXCEPTION
+  WHEN invalidEng THEN
+    RAISE_APPLICATION_ERROR(-20005, 'Countries are invalid for a English competition.');
+END;
+/
