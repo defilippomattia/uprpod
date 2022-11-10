@@ -19,6 +19,45 @@ EXCEPTION
 END;
 /
 
+CREATE OR REPLACE TRIGGER insertTrigger2
+BEFORE INSERT ON system.rezervacija
+FOR EACH ROW
+DECLARE
+  timeAlreadyReserverd EXCEPTION;
+  someNum INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO someNum
+  FROM REZERVACIJA
+  WHERE :new.TEREN_ID = TEREN_ID AND
+        :new.POCETAK = rezervacija.pocetak;
+  IF (someNum>0) THEN
+    RAISE timeAlreadyReserverd;
+  END IF;
+EXCEPTION
+  WHEN timeAlreadyReserverd THEN
+    RAISE_APPLICATION_ERROR(-20005, 'Time slot is already reserved');
+END;
+/
+
+CREATE OR REPLACE TRIGGER insertTrigger3
+BEFORE INSERT ON system.rezervacija
+FOR EACH ROW
+DECLARE
+  alreadyPlayingElsewhere EXCEPTION;
+  someNum INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO someNum
+  FROM REZERVACIJA
+  WHERE :new.POCETAK = rezervacija.pocetak
+  AND :new.OIB = rezervacija.oib;
+  IF (someNum>0) THEN
+    RAISE alreadyPlayingElsewhere;
+  END IF;
+EXCEPTION
+  WHEN alreadyPlayingElsewhere THEN
+    RAISE_APPLICATION_ERROR(-20005, 'You are already plaing at another field');
+END;
+/
 
 CREATE OR REPLACE FUNCTION get_rand_start_time
     RETURN VARCHAR2

@@ -304,3 +304,37 @@ END get_rand_start_time;
 SELECT get_rand_start_time() FROM dual;
 
 SELECT * FROM REZERVACIJA
+
+
+CREATE OR REPLACE TRIGGER insertTrigger2
+BEFORE INSERT ON system.rezervacija
+FOR EACH ROW
+DECLARE
+  timeAlreadyReserverd EXCEPTION;
+  someNum INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO someNum
+  FROM REZERVACIJA
+  WHERE :new.TEREN_ID = TEREN_ID AND
+        :new.POCETAK = rezervacija.pocetak;
+  IF (someNum>0) THEN
+    RAISE timeAlreadyReserverd;
+  END IF;
+EXCEPTION
+  WHEN timeAlreadyReserverd THEN
+    RAISE_APPLICATION_ERROR(-20005, 'Time slot is already reserved');
+END;
+/
+
+SELECT * FROM REZERVACIJA WHERE POCETAK = '29-NOV-22 11:00' 
+
+SELECT * FROM TEREN
+
+SELECT * FROM REZERVACIJA
+
+INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+    '8',
+    TO_DATE('29-NOV-22 12:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('29-NOV-22 13:00', 'dd-MON-yy hh24:mi'),
+    '4',
+    '0515');
