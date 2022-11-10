@@ -1,0 +1,21 @@
+CREATE OR REPLACE TRIGGER insertTrigger
+BEFORE INSERT ON system.rezervacija
+FOR EACH ROW
+DECLARE
+  threeDaysException EXCEPTION;
+  someNum INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO someNum
+  FROM KORISNIK
+  JOIN REZERVACIJA ON KORISNIK.OIB = REZERVACIJA.OIB
+  WHERE SUBSTR(CURRENT_DATE,0,9) = SUBSTR(REZERVACIJA.pocetak,0,9)
+  AND :new.OIB = KORISNIK.OIB;
+  IF (someNum>2) THEN
+    RAISE threeDaysException;
+  END IF;
+EXCEPTION
+  WHEN threeDaysException THEN
+    RAISE_APPLICATION_ERROR(-20005, 'Only 3 reservations per day per user allowed');
+END;
+/
+

@@ -28,58 +28,68 @@ INSERT INTO system.TEREN(TEREN_ID,VRSTA_TERENA,NATKRIVEN,IME,SPORTSKI_OBJEKT_ID)
 
 INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '1',
-    TO_DATE('2021/05/03 16:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/05/03 17:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('23-NOV-21 19:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('23-NOV-21 20:00', 'dd-MON-yy hh24:mi'),
     '1',
     '0541');
+
 INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '2',
-    TO_DATE('2021/05/03 19:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/05/03 22:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('23-DEC-21 14:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('23-DEC-21 15:00', 'dd-MON-yy hh24:mi'),
     '1',
     '0311');
 INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '3',
-    TO_DATE('2021/06/22 19:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/06/22 22:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('05-MAY-22 14:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('05-MAY-22 15:00', 'dd-MON-yy hh24:mi'),
     '2',
     '0311');
 
 INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '4',
-    TO_DATE('2021/01/11 11:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/01/11 12:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('25-NOV-22 14:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('25-NOV-22 15:00', 'dd-MON-yy hh24:mi'),
     '5',
     '0515');
 
 INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
     '5',
-    TO_DATE('2021/05/23 15:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/05/23 16:00', 'yyyy/mm/dd hh24:mi'),
-    '5',
-    '0515');
-
-INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
-    '6',
-    TO_DATE('2021/05/25 15:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/05/25 16:00', 'yyyy/mm/dd hh24:mi'),
-    '5',
-    '0515');
-
-
-INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
-    '7',
-    TO_DATE('2021/05/27 15:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/05/27 16:00', 'yyyy/mm/dd hh24:mi'),
+    TO_DATE('27-NOV-22 14:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('27-NOV-22 15:00', 'dd-MON-yy hh24:mi'),
     '4',
     '0515');
 
-INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
-    '8',
-    TO_DATE('2021/05/26 15:00', 'yyyy/mm/dd hh24:mi'),
-    TO_DATE('2021/05/26 16:00', 'yyyy/mm/dd hh24:mi'),
-    '1',
-    '0515');
+
+
+-- INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+--     '5',
+--     TO_DATE('2021/05/23 15:00', 'yyyy/mm/dd hh24:mi'),
+--     TO_DATE('2021/05/23 16:00', 'yyyy/mm/dd hh24:mi'),
+--     '5',
+--     '0515');
+
+-- INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+--     '6',
+--     TO_DATE('2021/05/25 15:00', 'yyyy/mm/dd hh24:mi'),
+--     TO_DATE('2021/05/25 16:00', 'yyyy/mm/dd hh24:mi'),
+--     '5',
+--     '0515');
+
+
+-- INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+--     '7',
+--     TO_DATE('2021/05/27 15:00', 'yyyy/mm/dd hh24:mi'),
+--     TO_DATE('2021/05/27 16:00', 'yyyy/mm/dd hh24:mi'),
+--     '4',
+--     '0515');
+
+-- INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+--     '8',
+--     TO_DATE('2021/05/26 15:00', 'yyyy/mm/dd hh24:mi'),
+--     TO_DATE('2021/05/26 16:00', 'yyyy/mm/dd hh24:mi'),
+--     '1',
+--     '0515');
 
 
 INSERT INTO system.REKVIZIT(REKVIZIT_ID,TIP,MARKA, SPORTSKI_OBJEKT_ID) VALUES ('1','Nogometna lopta','Nike','1');
