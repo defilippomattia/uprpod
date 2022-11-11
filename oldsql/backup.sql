@@ -338,3 +338,33 @@ INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES 
     TO_DATE('29-NOV-22 13:00', 'dd-MON-yy hh24:mi'),
     '4',
     '0515');
+
+CREATE OR REPLACE TRIGGER insertTrigger3
+BEFORE INSERT ON system.rezervacija
+FOR EACH ROW
+DECLARE
+  alreadyPlayingElsewhere EXCEPTION;
+  someNum INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO someNum
+  FROM REZERVACIJA
+  WHERE :new.POCETAK = rezervacija.pocetak
+  AND :new.OIB = rezervacija.oib;
+  IF (someNum>0) THEN
+    RAISE alreadyPlayingElsewhere;
+  END IF;
+EXCEPTION
+  WHEN alreadyPlayingElsewhere THEN
+    RAISE_APPLICATION_ERROR(-20005, 'You are already plaing at another field');
+END;
+/
+
+SELECT * FROM REZERVACIJA
+
+
+INSERT INTO system.REZERVACIJA(REZERVACIJA_ID,POCETAK,KRAJ,TEREN_ID,OIB) VALUES (
+    '8',
+    TO_DATE('13-NOV-22 11:00', 'dd-MON-yy hh24:mi'),
+    TO_DATE('13-NOV-22 12:00', 'dd-MON-yy hh24:mi'),
+    '3',
+    '0515');
