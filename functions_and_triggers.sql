@@ -55,7 +55,7 @@ BEGIN
   END IF;
 EXCEPTION
   WHEN alreadyPlayingElsewhere THEN
-    RAISE_APPLICATION_ERROR(-20005, 'You are already plaing at another field');
+    RAISE_APPLICATION_ERROR(-20005, 'Time slot is already reserved');
 END;
 /
 
