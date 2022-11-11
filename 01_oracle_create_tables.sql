@@ -8,7 +8,7 @@ CREATE TABLE system.grad
 
 CREATE TABLE system.korisnik
 (
-  oib VARCHAR(11) NOT NULL,
+  oib VARCHAR(60) NOT NULL,
   ime VARCHAR(60) NOT NULL,
   prezime VARCHAR(60) NOT NULL,
   PRIMARY KEY (oib)
